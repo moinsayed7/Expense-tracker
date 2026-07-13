@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { SessionProvider, useSession } from "next-auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,8 +34,10 @@ export default function RootLayout({
           <Link className="pr-2 " href={"/"}>Home</Link>
           <Link className="pl-2 border-l" href={"/addExp"}>+Add Expense</Link>
         </nav>
+        <SessionProvider>{children}</SessionProvider>
         
-        {children}</body>
+        
+        </body>
     </html>
   );
 }
