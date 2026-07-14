@@ -4,7 +4,37 @@ import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/lib/checkUser";
 import { expenseValidation } from "@/app/lib/expenseValidator";
 import { prisma } from "@/app/lib/prisma";
-import { Prisma } from "@prisma/client";
+
+
+
+
+export async function GET() {
+
+    const data=await getCurrentUser();
+
+    if(!data){
+        return NextResponse.json({error:"Unauthorized"}, {status:401})
+    }
+
+    try{
+        const expenses= await prisma.expense.findMany({
+        where:{
+            userId:Number(data.id)
+        }
+    })
+        return NextResponse.json({expenses}, {status:200})
+    }
+    catch(err){
+        console.error("GET api/expenses/ FAILED", err);
+        return NextResponse.json({error:"Internal server error"}, {status:500});
+    }
+
+
+    
+}
+
+
+
 
 export async function POST(request:Request) {
 
