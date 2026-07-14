@@ -16,5 +16,4 @@ export const expenseValidation =z.object({
 
 })
 
-
-
+export const updateExpenseValidation = expenseValidation.partial();

@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import getCurrentUser from "@/app/lib/checkUser";
 import { expenseValidation } from "@/app/lib/expenseValidator";
 import { prisma } from "@/app/lib/prisma";
-
+import { updateExpenseValidation } from "@/app/lib/expenseValidator";
 
 
 
@@ -28,6 +28,7 @@ export async function GET() {
         console.error("GET api/expenses/ FAILED", err);
         return NextResponse.json({error:"Internal server error"}, {status:500});
     }
+
 
 
     
