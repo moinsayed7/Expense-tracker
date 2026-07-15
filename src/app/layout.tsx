@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <nav className="bg-[#1F2937] border-t border-gray-700 w-[100%] px-3 py-2 text-white">
           <Link className="pr-2 " href={"/"}>Home</Link>
-          <Link className="pl-2 border-l" href={"/addExp"}>+Add Expense</Link>
+          <Link className="pl-2 border-l" href={"/addExpense"}>+Add Expense</Link>
         </nav>
         <SessionProvider>{children}</SessionProvider>
         
