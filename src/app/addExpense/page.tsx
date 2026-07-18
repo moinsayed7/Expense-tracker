@@ -74,6 +74,7 @@ export default function AddExpense() {
 
         <input
           value={amount}
+          step={"0.01"}
           type="number"
           min={0}
           id="amount"
