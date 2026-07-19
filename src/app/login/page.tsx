@@ -32,7 +32,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
+        <div>Login 
             <form onSubmit={handleData}>
                 <input
                     value={email}
@@ -53,6 +53,7 @@ export default function LoginPage() {
     );
 }
 
+// email:user@example.com
+// pass:user@example.com
 
-
-
+ 

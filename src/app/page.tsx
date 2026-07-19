@@ -1,5 +1,6 @@
 import getCurrentUser from "./lib/checkUser";
 import { prisma } from "./lib/prisma";
+import DeleteButton from "./deleteButton/deleteButton";  
 
 export function GeneralPage() {
   return (
@@ -24,7 +25,10 @@ export function GeneralPage() {
       </div>
 
       <div>
+
+        <a href="/login">
         <button>Get Started</button>
+        </a>
       </div>
     </div>
   );
@@ -77,7 +81,14 @@ export default async function Home() {
                 <div>{ele.description}</div>
               </div>
 
-              <div>₹{(ele.amount / 100).toFixed(2)}</div>
+              <div className="flex items-center">
+                
+                ₹{(ele.amount / 100).toFixed(2)}
+
+                <DeleteButton expenseId={ele.id}/>
+
+
+              </div>
             </div>
           );
         })}
