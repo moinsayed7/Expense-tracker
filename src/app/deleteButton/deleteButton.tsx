@@ -1,6 +1,5 @@
 "use client";
 import { EllipsisVertical } from "lucide-react";
-import { clonePageVaryPathWithNewSearchParams } from "next/dist/client/components/segment-cache/vary-path";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -35,9 +34,10 @@ export default  function DeleteButton({expenseId}:{expenseId:number}) {
 
     }
 
-    async function handleEdit(){
-        
-    }
+    async function handleEdit() {
+    setIsMenuOpen(false);
+    router.push(`/editExpense/${expenseId}`);
+}
 
 
     return (
