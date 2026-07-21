@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { SessionProvider, useSession } from "next-auth/react";
+import { SignOutButton } from "./signoutButton/signOutButton";
+import NavBar from "./navBar/navBar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,10 +33,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <nav className="bg-[#1F2937] border-t border-gray-700 w-[100%] px-3 py-2 text-white">
-          <Link className="pr-2 " href={"/"}>Home</Link>
-          <Link className="pl-2 border-l" href={"/addExpense"}>+Add Expense</Link>
-        </nav>
+        <NavBar/>
         <SessionProvider>{children}</SessionProvider>
         
         

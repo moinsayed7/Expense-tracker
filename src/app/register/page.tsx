@@ -68,14 +68,15 @@ export default function SignUpPage() {
     }
 
     return(
-        <div>
-            <h1>SignUp</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={email} id="email" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}/>
+        <div className="flex flex-col items-center ">
+            <div className=" flex flex-col items-center border px-7 py-3 mt-9">
+            <h1 className="mb-5 text-2xl">Sign Up</h1>
+            <form onSubmit={handleSubmit} className="">
+                <input className="border px-4 py-1 mb-4 " type="text" value={email} id="email" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}/>
 
                 <br />
 
-                <input value={password} type="password" id="password" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
+                <input className="border px-4 py-1" value={password} type="password" id="password" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
 
                 <br />
 
@@ -88,21 +89,12 @@ export default function SignUpPage() {
 
             {error && <p className="text-red-500">{error}</p>}
 
+            </div>
+
         </div>
     )
     
     
 } 
-
-
-
-
-
-
-
-
-
-
-
 
 
