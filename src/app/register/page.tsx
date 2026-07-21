@@ -1,100 +1,103 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import { signUpValidation } from "../lib/registerValidation";
-import z from "zod"
+import AuthCard from "../component/AuthCard";
+import z from "zod";
 
+type signUp = z.infer<typeof signUpValidation>;
 
-type signUp=z.infer<typeof signUpValidation>
-
-
-async function sendData(data:signUp) {
-
-    const response= await fetch(`/api/register/`,{
-        method:"POST",
+async function sendData(data: signUp) {
+    const response = await fetch(`/api/register/`, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     });
 
-    const result=await response.json();
+    const result = await response.json();
 
-    if(!response.ok){
-        return {success:false, error:result.error || "Something went wrong"}
+    if (!response.ok) {
+        return { success: false, error: result.error || "Something went wrong" };
     }
 
-    return {success:true, id:result.id}
-
-
-
-    
+    return { success: true, id: result.id };
 }
 
-
-
 export default function SignUpPage() {
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [error, setError] = useState<string | null>(null);
 
-    const [email, setEmail]=useState<string>("");
-    const [password, setPassword]=useState<string>("");
-    const [error, setError]=useState<string | null>(null);
-
-    async function handleSubmit(e:React.FormEvent){
-
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        setError(null)
+        setError(null);
 
-        const data={email:email, password:password};
+        const data = { email: email, password: password };
 
-        const parsed= signUpValidation.safeParse(data);
+        const parsed = signUpValidation.safeParse(data);
 
-        if(!parsed.success){
-            setError(parsed.error.issues[0].message)
-            return 
+        if (!parsed.success) {
+            setError(parsed.error.issues[0].message);
+            return;
         }
 
         const result = await sendData(parsed.data);
 
-        if(!result.success){
+        if (!result.success) {
             setError(result.error);
-            return
+            return;
         }
 
         setEmail("");
         setPassword("");
 
-       
-        window.location.href= "/login"
-
-
+        window.location.href = "/login";
     }
 
-    return(
-        <div className="flex flex-col items-center ">
-            <div className=" flex flex-col items-center border px-7 py-3 mt-9">
+    return (
+        <AuthCard>
             <h1 className="mb-5 text-2xl">Sign Up</h1>
             <form onSubmit={handleSubmit} className="">
-                <input className="border px-4 py-1 mb-4 " type="text" value={email} id="email" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}/>
+                <input
+                    className="border border-gray-400 px-4 py-1 mb-4 w-full"
+                    type="text"
+                    value={email}
+                    id="email"
+                    placeholder="Email"
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                    }}
+                />
 
-                <br />
 
-                <input className="border px-4 py-1" value={password} type="password" id="password" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
+                <input
+                    className="border border-gray-400 px-4 py-1 mb-4 w-full"
+                    value={password}
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
+                />
 
-                <br />
 
-                <button type="submit">Submit</button>
-                
+                <button
+                    type="submit"
+                    className="bg-blue-600 text-white shadow-xl rounded-lg px-4 py-1 mb-4 w-full hover:bg-blue-700"
+                >
+                    Sign Up
+                </button>
             </form>
 
-            <p>already have account ?</p>
-            <a href="/login" className="text-blue-900">login</a>
+            <p className="mt-2 text-sm text-gray-600">
+                Already have an account?{" "}
+                <a href="/login" className="text-blue-900 underline">
+                    Login
+                </a>
+            </p>
 
             {error && <p className="text-red-500">{error}</p>}
-
-            </div>
-
-        </div>
-    )
-    
-    
-} 
-
-
+        </AuthCard>
+    );
+}

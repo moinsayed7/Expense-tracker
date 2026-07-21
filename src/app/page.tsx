@@ -58,7 +58,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col items-center ">
-      Your EmailId is {currentUser.email}
+      
 
       {expenses.length < 1 && <div>You dont have any expense</div>}
 
