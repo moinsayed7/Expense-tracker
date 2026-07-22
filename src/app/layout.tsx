@@ -6,7 +6,6 @@ import { SessionProvider, useSession } from "next-auth/react";
 import { SignOutButton } from "./signoutButton/signOutButton";
 import NavBar from "./navBar/navBar";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,12 +31,12 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <NavBar/>
-        <SessionProvider>{children}</SessionProvider>
-        
-        
-        </body>
+      <body className="min-h-full flex flex-col max-[470px]:text-sm">
+        <SessionProvider>
+          <NavBar />
+          {children}
+        </SessionProvider>
+      </body>
     </html>
   );
 }

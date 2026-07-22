@@ -65,7 +65,7 @@ export default function SignUpPage() {
                     id="email"
                     placeholder="Email"
                     onChange={(e) => {
-                        setEmail(e.target.value);
+                        setEmail(e.target.value.trim());
                     }}
                 />
 

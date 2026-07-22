@@ -39,7 +39,7 @@ export default function LoginPage() {
         <input
           className="border border-gray-400 px-4 py-1 mb-4 w-full"
           type="text"
-          value={email}
+          value={email.trim()}
           id="email"
           placeholder="Email"
           onChange={(e) => {
@@ -78,5 +78,7 @@ export default function LoginPage() {
   );
 }
 
-// email:user@example.com
-// pass:user@example.com
+// email: 
+// test@examp.com
+// pass:
+//  test@examp.com
