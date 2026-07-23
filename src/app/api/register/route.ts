@@ -9,7 +9,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Unable to parse the data" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Unable to parse the data" },
+      { status: 400 },
+    );
   }
 
   const parsed = signUpValidation.safeParse(body);
@@ -29,20 +32,22 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { message: "Account created successfully" },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (err: unknown) {
-    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
-      return NextResponse.json({ error: "Email already in use" }, { status: 409 });
+    if (
+      err instanceof Prisma.PrismaClientKnownRequestError &&
+      err.code === "P2002"
+    ) {
+      return NextResponse.json(
+        { error: "Email already in use" },
+        { status: 409 },
+      );
     }
     console.error("POST api/register failed:", err);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }
-
-
-
-
-
-
-

@@ -29,8 +29,10 @@ export default function DeleteButton({ expenseId }: { expenseId: number }) {
   }
 
   return (
-    <div className="relative
-     flex flex-col">
+    <div
+      className="relative
+     flex flex-col"
+    >
       <button
         onClick={(eve) => {
           setIsMenuOpen(!isMenuOpen);
@@ -41,8 +43,18 @@ export default function DeleteButton({ expenseId }: { expenseId: number }) {
 
       {isMenuOpen && (
         <div className="absolute  bg-white right-0 border rounded shadow flex flex-col mr-5 mt-3 w-20 ">
-          <button className="border-b hover:bg-gray-500 hover:text-white p-1 transition duration-200 " onClick={handleEdit}>Edit</button>
-          <button className="hover:bg-gray-500 hover:text-white p-1 transition duration-200 " onClick={handleDelete}>Delete</button>
+          <button
+            className="border-b hover:bg-gray-500 hover:text-white p-1 transition duration-200 "
+            onClick={handleEdit}
+          >
+            Edit
+          </button>
+          <button
+            className="hover:bg-gray-500 hover:text-white p-1 transition duration-200 "
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
         </div>
       )}
     </div>

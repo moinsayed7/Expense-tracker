@@ -1,9 +1,13 @@
 import getCurrentUser from "@/app/lib/checkUser";
 import { prisma } from "@/app/lib/prisma";
 import { redirect } from "next/navigation";
-import EditForm  from "./EditForm";
+import EditForm from "./EditForm";
 
-export default async function EditPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const session = await getCurrentUser();
   if (!session) {
     redirect("/login");

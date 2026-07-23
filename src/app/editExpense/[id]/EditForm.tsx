@@ -1,15 +1,22 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { categoryValidation, expenseValidation } from "@/app/lib/expenseValidator";
+import {
+  categoryValidation,
+  expenseValidation,
+} from "@/app/lib/expenseValidator";
 import { Expense } from "@prisma/client";
 
 const categoryOptions = categoryValidation.options;
 
 export default function EditForm({ expense }: { expense: Expense }) {
   const router = useRouter();
-  const [amount, setAmount] = useState<string>((expense.amount / 100).toFixed(2));
-  const [description, setDescription] = useState<string>(expense.description ?? "");
+  const [amount, setAmount] = useState<string>(
+    (expense.amount / 100).toFixed(2),
+  );
+  const [description, setDescription] = useState<string>(
+    expense.description ?? "",
+  );
   const [category, setCategory] = useState<string>(expense.category);
   const [error, setError] = useState<string | null>(null);
 
@@ -43,10 +50,13 @@ export default function EditForm({ expense }: { expense: Expense }) {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-  <div className="bg-blue-200 flex flex-col px-5 py-15 rounded-xl shadow-xl -translate-y-10">
+      <div className="bg-blue-200 flex flex-col px-5 py-15 rounded-xl shadow-xl -translate-y-10">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="mb-7 ">
-            <label className="text-lg max-[370px]:text-sm font-bold" htmlFor="amount">
+            <label
+              className="text-lg max-[370px]:text-sm font-bold"
+              htmlFor="amount"
+            >
               Amount:{" "}
             </label>
 
@@ -65,7 +75,10 @@ export default function EditForm({ expense }: { expense: Expense }) {
           </div>
 
           <div className="mb-7">
-            <label className="text-lg max-[370px]:text-sm font-bold" htmlFor="description">
+            <label
+              className="text-lg max-[370px]:text-sm font-bold"
+              htmlFor="description"
+            >
               Description:{" "}
             </label>
 
@@ -82,7 +95,10 @@ export default function EditForm({ expense }: { expense: Expense }) {
           </div>
 
           <div className="mb-7">
-            <label className="text-lg max-[370px]:text-sm font-bold" htmlFor="category">
+            <label
+              className="text-lg max-[370px]:text-sm font-bold"
+              htmlFor="category"
+            >
               Category:{" "}
             </label>
 

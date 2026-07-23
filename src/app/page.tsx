@@ -23,11 +23,9 @@ export function GeneralPage() {
       <div className="flex flex-col items-center bg-blue-300 text-base px-1 py-10 mb-10 rounded-lg shadow-xl w-[85%] text-wrap">
         <h3 className="font-bold text-xl mb-2">Features</h3>
 
-
         <ul className="list-disc max-[470px]:w-[80%]">
           <li> Secure user authentication and account management</li>
-          <li>Create, read, update, and delete expenses (CRUD operations)
-          </li>
+          <li>Create, read, update, and delete expenses (CRUD operations)</li>
           <li> Track and manage personal expenses easily</li>
           <li> Add expense details like title, amount, category, and date</li>
           <li> Modern and responsive UI built with Tailwind CSS</li>
@@ -39,12 +37,12 @@ export function GeneralPage() {
         </ul>
       </div>
 
-        <Link
-          href="/register"
-          className="bg-red-400 text-white text-lg px-6 py-3 rounded-2xl shadow-2xl hover:bg-red-500 inline-block mb-20"
-        >
-          Get Started
-        </Link>
+      <Link
+        href="/register"
+        className="bg-red-400 text-white text-lg px-6 py-3 rounded-2xl shadow-2xl hover:bg-red-500 inline-block mb-20"
+      >
+        Get Started
+      </Link>
     </div>
   );
 }
