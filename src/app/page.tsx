@@ -6,7 +6,7 @@ import Link from "next/link";
 export function GeneralPage() {
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-center font-bold mb-10 text-2xl min-[400px]:text-xl mt-7">
+      <h1 className="text-center font-bold mb-10 text-3xl max-[400px]:text-xl mt-7">
         Welcome to Expense Tracker
       </h1>
 
@@ -40,8 +40,8 @@ export function GeneralPage() {
       </div>
 
         <Link
-          href="/login"
-          className="bg-red-400 text-white text-lg px-6 py-3 rounded-2xl shadow-2xl hover:bg-red-500 inline-block"
+          href="/register"
+          className="bg-red-400 text-white text-lg px-6 py-3 rounded-2xl shadow-2xl hover:bg-red-500 inline-block mb-20"
         >
           Get Started
         </Link>
@@ -101,7 +101,7 @@ export default async function Home() {
           return (
             <div
               key={ele.id}
-              className="flex w-[90%] bg-green-300 mt-2 justify-between items-center px-5 py-2 rounded-lg max-[470px]:text-sm"
+              className="flex w-[90%] bg-green-300 mb-2 justify-between items-center px-5 py-2 rounded-lg max-[470px]:text-sm"
             >
               <div>
                 <div className="font-bold">{ele.category}</div>

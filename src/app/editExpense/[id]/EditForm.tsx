@@ -46,7 +46,7 @@ export default function EditForm({ expense }: { expense: Expense }) {
   <div className="bg-blue-200 flex flex-col px-5 py-15 rounded-xl shadow-xl -translate-y-10">
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="mb-7 ">
-            <label className="text-lg " htmlFor="amount">
+            <label className="text-lg max-[370px]:text-sm font-bold" htmlFor="amount">
               Amount:{" "}
             </label>
 
@@ -65,7 +65,7 @@ export default function EditForm({ expense }: { expense: Expense }) {
           </div>
 
           <div className="mb-7">
-            <label className="text-lg " htmlFor="description">
+            <label className="text-lg max-[370px]:text-sm font-bold" htmlFor="description">
               Description:{" "}
             </label>
 
@@ -81,8 +81,8 @@ export default function EditForm({ expense }: { expense: Expense }) {
             />
           </div>
 
-          <div className="text-lg mb-7">
-            <label className="" htmlFor="category">
+          <div className="mb-7">
+            <label className="text-lg max-[370px]:text-sm font-bold" htmlFor="category">
               Category:{" "}
             </label>
 
